@@ -2,7 +2,7 @@
 
 ### Dependencies
 
-snake.c relies on ncurses to draw to the terminal. To install on Ubuntu/Debian, use:
+snake.c relies on ncurses to draw to the terminal. To install on <b>Ubuntu/Debian</b>, use:
 
 ```
 sudo apt-get install lib32ncurses5-dev
