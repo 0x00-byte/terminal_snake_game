@@ -16,4 +16,4 @@ gcc snake.c -o snake -lncursesw
 ./snake
 ```
 ### I want to play without the hassle 👺
-If you don't want to compile the code, you can download the compiled version from this [link](https://github.com/0x00-byte/terminal_snake_game/releases)
+If you don't want to compile the code, you can download the compiled version from this [link](https://github.com/0x00-byte/terminal_snake_game/releases) <b>(only Linux)</b>
