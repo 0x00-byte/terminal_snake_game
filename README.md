@@ -1,4 +1,5 @@
 # Terminal snake game
+![ezgif com-gif-maker(1)](https://user-images.githubusercontent.com/83474704/117977430-7a391080-b339-11eb-9004-8dee8989a8f8.gif)
 
 ### Dependencies
 
