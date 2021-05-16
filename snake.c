@@ -8,6 +8,7 @@ int ball_row = 0;
 int ball_col = 0;
 
 void ball_generation(int max_row, int max_col){
+	srand(time(NULL)); // to generate really random numbers
 	ball_row = rand() % max_row;
 	ball_col = rand() % max_col;
 }
