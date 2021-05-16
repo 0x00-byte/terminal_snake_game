@@ -1,4 +1,4 @@
-# Terminal snake game 🐍
+# Terminal game: snake 🐍
 ![snake](https://user-images.githubusercontent.com/83474704/118398351-d87b3180-b660-11eb-807d-8cadcb7b0ec5.gif)
 
 ## Dependencies 🛰
