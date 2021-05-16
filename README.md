@@ -1,5 +1,5 @@
 # Terminal snake game 🐍
-![ezgif com-gif-maker(1)](https://user-images.githubusercontent.com/83474704/117977430-7a391080-b339-11eb-9004-8dee8989a8f8.gif)
+![snake](https://user-images.githubusercontent.com/83474704/118398351-d87b3180-b660-11eb-807d-8cadcb7b0ec5.gif)
 
 ## Dependencies 🛰
 
