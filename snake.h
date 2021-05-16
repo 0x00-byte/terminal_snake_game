@@ -3,6 +3,7 @@
 #include <unistd.h>
 #include <locale.h>
 #include <unistd.h>
+#include <time.h>
 
 #include <ncurses.h>
 
