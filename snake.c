@@ -7,6 +7,20 @@ int score = 0;
 int ball_row = 0;
 int ball_col = 0;
 
+void freeList(t_snake *snake){
+	t_snake *save_ptr = snake->next;
+	for(;;){
+		if(save_ptr != NULL){
+			free(snake);
+			snake = save_ptr;
+			save_ptr = save_ptr->next;
+		} else {
+			free(save_ptr);
+			break;
+		}
+	}
+}
+
 void ball_generation(int max_row, int max_col){
 	srand(time(NULL)); // to generate really random numbers
 	ball_row = rand() % max_row;
@@ -31,6 +45,7 @@ void write_data(t_snake *snake, int row, int col){
 
 t_snake *push_head(t_snake *snake){
 	t_snake *snake_head = (t_snake*)malloc(sizeof(t_snake));
+	write_data(snake_head, 0, 0);
 	snake->next = snake_head;
 	return snake_head;
 }
@@ -143,7 +158,9 @@ int game(int *row, int *col){
 			refresh();
 		}
 		else break;
-	}	
+	}
+	freeList(start_snake);
+	free(snake);	
 	clrtoeol();
 	refresh();
 	wclear(stdscr);
@@ -157,7 +174,7 @@ void print_menu(WINDOW *menu_win, int highlight){
 	col = (col / 2) / 2 - 1;
 	box(menu_win, 0, 0);
 	for (i = 0; i < n_choices; ++i){
-		if (highlight == i + 1){ 			/* High light the present choice */
+		if (highlight == i + 1){ 			// High light the present choice 
 			wattron(menu_win, A_BOLD );
 			mvwprintw(menu_win, row, col, "%s", choices[i]);
 			wattroff(menu_win, A_BOLD);
@@ -167,7 +184,7 @@ void print_menu(WINDOW *menu_win, int highlight){
 	wrefresh(menu_win);
 }
 
-int game_menu(int *row, int *col){
+void game_menu(int *row, int *col){
 	char mesg[] = "Snake game by ";
 	char nikname[] = "0x00_byte";
 
@@ -213,7 +230,7 @@ int game_menu(int *row, int *col){
 				break;
 		}
 		print_menu(menu_win, highlight);
-		if (choice != 0) break; /* User did a choice come out of the infinite loop */
+		if (choice != 0) break; // User did a choice come out of the infinite loop 
 	}
 	clrtoeol();
 
@@ -226,9 +243,7 @@ int game_menu(int *row, int *col){
 		delwin(menu_win);
 		refresh();
 		endwin();
-		return 0;
 	}
-	
 }
 
 void color_test(int *row, int *col){
@@ -242,12 +257,12 @@ void color_test(int *row, int *col){
 	}
 }
 
-int main(int argc, char *argv[]){
+int main(void){
 	int row, col;
 
 	setlocale( LC_ALL, ""); // for normal print "alt codes"
 
-	initscr(); /* Start curses mode */
+	initscr(); // Start curses mode
 	//raw();
 	cbreak(); 
 	curs_set(0);
