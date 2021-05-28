@@ -72,21 +72,20 @@ int game(int *row, int *col){
 	int start_row = *row / 2;
 	int start_col = *col / 2;
 	score = 0;
-	// WINDOW *game;
 	
 	keypad(stdscr, TRUE);
 	nodelay(stdscr, TRUE); // off waiting press button for getch()
 
 	t_snake *snake = create_snake(start_row, start_col);
 
-	t_snake *e2_start_snake = start_snake;
+	t_snake *e_snake = start_snake;
 	for(;;){
-		mvprintw(e2_start_snake->row, e2_start_snake->col, "●");
-		if(e2_start_snake->next == NULL){
-			mvprintw(e2_start_snake->row, e2_start_snake->col, "●");
+		mvprintw(e_snake->row, e_snake->col, "●");
+		if(e_snake->next == NULL){
+			mvprintw(e_snake->row, e_snake->col, "●");
 			break;
 		}
-		e2_start_snake = e2_start_snake->next;
+		e_snake = e_snake->next;
 	}
 	ball_generation(*row, *col);
 	mvprintw(ball_row, ball_col, "●"); 
@@ -100,7 +99,7 @@ int game(int *row, int *col){
 			int start_row = start_snake->row;
 			int start_col = start_snake->col;
 
-			t_snake *e_snake = start_snake;
+			e_snake = start_snake;
 			for(;;){
 				if(e_snake->next != NULL){
 					e_snake->row = e_snake->next->row;
@@ -110,12 +109,12 @@ int game(int *row, int *col){
 				else break;
 			}
 
-			t_snake *e2_start_snake = start_snake;
+			e_snake = start_snake;
 			for(;;){
-				if(e2_start_snake->next == NULL) break;
-				mvprintw(e2_start_snake->row, e2_start_snake->col, "●");
+				if(e_snake->next == NULL) break;
+				mvprintw(e_snake->row, e_snake->col, "●");
 				refresh();
-				e2_start_snake = e2_start_snake->next;
+				e_snake = e_snake->next;
 			}
 
 			if((c = getch()) != ERR){
